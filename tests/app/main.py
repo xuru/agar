@@ -1,8 +1,3 @@
-#!/usr/bin/env python
-
-from env_setup import setup_django
-setup_django()
-
 from agar.env import on_production_server
 from agar.config import Config
 
@@ -43,16 +38,10 @@ class MainHandler(RequestHandler):
         """
         self.response.out.write(html)
 
+
 def get_application():
     return WSGIApplication(
         [('/', MainHandler)],
         debug=not on_production_server
     )
 application = get_application()
-
-def main():
-    from google.appengine.ext.webapp import util
-    util.run_wsgi_app(application)
-
-if __name__ == '__main__':
-    main()
