@@ -1,7 +1,4 @@
-import urllib
-
-from webapp2 import WSGIApplication
-from webtest import Request
+from webtest import TestApp
 
 from agar.url import uri_for
 from agar.test import BaseTest, WebTest
@@ -56,12 +53,11 @@ class FormTest(JsonWebTestCase, WebTest):
     APPLICATION = application
 
     def setUp(self):
-        WSGIApplication.request = Request.blank("/")
-        self.uri = uri_for('api-v1')
+        self.test_app = TestApp(self.APPLICATION)
         super(FormTest, self).setUp()
 
     def test_get(self):
-        response = self.get(self.uri)
+        response = self.test_app.get(uri_for('api-v1'))
         self.assertOK(response)
         data = response.json['data']
         self.assertEqual(len(data), 2)
@@ -71,8 +67,7 @@ class FormTest(JsonWebTestCase, WebTest):
         self.assertIsNotNone(cursor)
 
     def test_get_page_size(self):
-        params = urllib.urlencode({'page_size': 5})
-        response = self.get("%s?%s" % (self.uri, params))
+        response = self.test_app.get(uri_for('api-v1', page_size=5))
         self.assertOK(response)
         data = response.json['data']
         self.assertEqual(len(data), 2)
@@ -82,6 +77,5 @@ class FormTest(JsonWebTestCase, WebTest):
         self.assertIsNotNone(cursor)
 
     def test_invalid_param(self):
-        params = urllib.urlencode({'foo': 'bar'})
-        response = self.get("%s?%s" % (self.uri, params))
+        response = self.test_app.get(uri_for('api-v1', foo='bar'), status=400)
         self.assertBadRequest(response, errors={u'foo': u'* Not a recognized parameter'})

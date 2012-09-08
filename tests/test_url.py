@@ -1,21 +1,15 @@
 from env_setup import setup_django; setup_django()
 
-
-from webapp2 import WSGIApplication
-from webtest import Request
 from agar.url import uri_for
 from agar.test import BaseTest
 
 
 class UriTest(BaseTest):
     def setUp(self):
-        self.method = uri_for
-        WSGIApplication.request = Request.blank("/")
         super(UriTest, self).setUp()
 
     def test_get_uri(self):
-        uri = self.method('api-v1')
-        self.assertEqual(uri, '/api/v1/model1')
+        self.assertEqual(uri_for('api-v1'), '/api/v1/model1')
 
     def test_get_invalid_uri_name(self):
         try:

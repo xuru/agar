@@ -55,7 +55,6 @@ def uri_for(name, *args, **kwargs):
 
     :return: An absolute or relative URI.
     """
-    request = kwargs.pop('request', get_request())
     owned_domain = kwargs.pop('owned_domain', True)
     _full = kwargs.get('_full', False)
     _netloc = kwargs.get('_netloc')
@@ -69,7 +68,7 @@ def uri_for(name, *args, **kwargs):
         app_module = __import__(app_name)
         try:
             application = app_module.application
-            uri = application.router.build(request, name, args, kwargs)
+            uri = application.router.build(None, name, args, kwargs)
             if uri is not None:
                 break
         except Exception, e:
