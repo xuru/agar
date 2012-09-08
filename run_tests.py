@@ -18,19 +18,22 @@ sys.path[0:0] = [
     agar_path,
     agar_lib_path,
     # SDK libs.
-    os.path.join(gae_path, 'lib', 'django_0_96'),
-    os.path.join(gae_path, 'lib', 'yaml', 'lib'),
-    os.path.join(gae_path, 'lib', 'protorpc'),
-    os.path.join(gae_path, 'lib', 'simplejson'),
-    os.path.join(gae_path, 'lib', 'fancy_urllib'),
     os.path.join(gae_path, 'lib', 'antlr3'),
-    os.path.join(gae_path, 'lib', 'whoosh'),
-    os.path.join(gae_path, 'lib', 'WebOb'),
+    os.path.join(gae_path, 'lib', 'django_0_96'),
+    os.path.join(gae_path, 'lib', 'fancy_urllib'),
     os.path.join(gae_path, 'lib', 'ipaddr'),
+    os.path.join(gae_path, 'lib', 'jinja2'),
+    os.path.join(gae_path, 'lib', 'protorpc'),
+    os.path.join(gae_path, 'lib', 'PyAMF'),
+    os.path.join(gae_path, 'lib', 'markupsafe'),
+    os.path.join(gae_path, 'lib', 'webob_1_1_1'),
     os.path.join(gae_path, 'lib', 'webapp2'),
+    os.path.join(gae_path, 'lib', 'yaml', 'lib'),
+    os.path.join(gae_path, 'lib', 'simplejson'),
+    os.path.join(gae_path, 'lib', 'whoosh'),
 ]
 
-import unittest2
+import unittest
 
 import logging
 import tempfile
@@ -38,10 +41,6 @@ import tempfile
 from google.appengine.api import yaml_errors
 from google.appengine.tools import dev_appserver
 from google.appengine.tools import dev_appserver_main
-
-
-__unittest = True
-from unittest2.main import main_
 
 
 config = matcher = None
@@ -69,6 +68,5 @@ dev_appserver.SetupStubs(config.application, **args)
 
 
 if __name__ == "__main__":
-    sys.argv = ['unit2', 'discover', '--start-directory', 'tests']
-    main_()
-
+    sys.argv = ['-m', 'discover', 'tests']
+    unittest.main(argv=sys.argv)

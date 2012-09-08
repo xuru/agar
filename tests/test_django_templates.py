@@ -1,6 +1,7 @@
-from unittest2 import TestCase
+from unittest import TestCase
 
 from agar.django.templates import render_template_to_string
+
 
 class DjangoTemplatesTest(TestCase):
 
