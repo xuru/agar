@@ -1,3 +1,5 @@
+from env_setup import setup_django; setup_django()
+
 from unittest import TestCase
 
 from agar.django.templates import render_template_to_string

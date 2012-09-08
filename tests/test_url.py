@@ -1,3 +1,6 @@
+from env_setup import setup_django; setup_django()
+
+
 from webapp2 import WSGIApplication
 from webtest import Request
 from agar.url import uri_for
