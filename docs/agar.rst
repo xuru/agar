@@ -69,7 +69,6 @@ agar.django.templatetags
 ^^^^^^^^^^^^^^^^^^^^^^^^
 .. automodule:: agar.django.templatetags
 
-.. autofunction:: agar.django.templatetags.uri_for
 .. autofunction:: agar.django.templatetags.on_production_server
 .. autofunction:: agar.django.templatetags.create_logout_url
 .. autofunction:: agar.django.templatetags.create_login_url
@@ -154,8 +153,6 @@ agar.test
 agar.url
 --------
 .. automodule:: agar.url
-
-.. autofunction:: agar.url.uri_for
 
 .. autoclass:: agar.url.UrlConfig
     :members:
