@@ -2,8 +2,8 @@ from django import forms
 
 from agar.django.decorators import validate_service
 from agar.django.forms import StrictRequestForm
-from agar.json import MultiPageHandler
-from agar.json import config as agar_json_config
+from agar.json_handlers import MultiPageHandler
+from agar.json_handlers import config as agar_json_config
 
 from restler import serializers
 

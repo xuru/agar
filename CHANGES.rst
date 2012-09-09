@@ -1,14 +1,16 @@
 Changes
 -------
-* **0.7** -- 2012-06-21
+* **0.7** -- 2012-09-09
 
   * Updated `agar.image`_ to work with NDB.
 
-  * removed `agar.url`
+  * Removed `agar.url`
+
+  * Renamed agar.json to agar.json_handlers
 
   * `uri_for` template tag uses webapp2.uri_for
 
-  * update WebTest to latest
+  * Update WebTest to latest
 
 * **0.6** -- 2012-01-01
 
