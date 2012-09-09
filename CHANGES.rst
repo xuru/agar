@@ -4,6 +4,12 @@ Changes
 
   * Updated `agar.image`_ to work with NDB.
 
+  * removed `agar.url`
+
+  * `uri_for` template tag uses webapp2.uri_for
+
+  * update WebTest to latest
+
 * **0.6** -- 2012-01-01
 
   * Removed alias for agar.url_for, use agar.uri_for
