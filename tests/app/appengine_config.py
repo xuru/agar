@@ -7,9 +7,6 @@ The configuration file used by :py:mod:`agar.config` implementations and other l
 # AGAR SETTINGS
 ##############################################################################
 
-# Root level WSGI application modules that 'agar.url.uri_for()' will search
-agar_url_APPLICATIONS = ['main', 'api']
-
 # Configure the service validation error logging level for the validate_service decorator
 # import logging
 # agar_django_LOG_SERVICE_VALIDATION_ERRORS = logging.WARN
