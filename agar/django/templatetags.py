@@ -41,7 +41,7 @@ def uri_for(parser, token):
     """
     Returns a URL matching given the route name with its parameters.
 
-    See :py:func:`~agar.url.uri_for` for more detailed parameter information.
+    See :py:func:`~webapp2.uri_for` for more detailed parameter information.
 
     For example::
 
