@@ -103,15 +103,15 @@ agar.image
 ---------
 agar.json
 ---------
-.. autoclass:: agar.json.JsonRequestHandler
+.. autoclass:: agar.json_handlers.JsonRequestHandler
     :members:
     :undoc-members:
 
-.. autoclass:: agar.json.MultiPageHandler
+.. autoclass:: agar.json_handlers.MultiPageHandler
     :members:
     :undoc-members:
 
-.. autoclass:: agar.json.CorsMultiPageHandler
+.. autoclass:: agar.json_handlers.CorsMultiPageHandler
     :members:
 
 -----------

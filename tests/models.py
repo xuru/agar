@@ -1,14 +1,19 @@
 from google.appengine.ext import db
 from google.appengine.ext import blobstore
 
-class Model2(db.Model):
+from restler.decorators import ae_db_serializer
 
+
+@ae_db_serializer
+class Model2(db.Model):
     model2_prop = db.StringProperty()
-    
+
     @property
     def my_method(self):
         return "I say blah!"
 
+
+@ae_db_serializer
 class Model1(db.Model):
     string = db.StringProperty()
     bytestring = db.ByteStringProperty()
