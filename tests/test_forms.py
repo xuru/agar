@@ -1,6 +1,6 @@
 from webtest import TestApp
 
-from agar.url import uri_for
+from webapp2 import Request, uri_for
 from agar.test import BaseTest, WebTest
 
 from api import application
@@ -57,7 +57,8 @@ class FormTest(JsonWebTestCase, WebTest):
         super(FormTest, self).setUp()
 
     def test_get(self):
-        response = self.test_app.get(uri_for('api-v1'))
+        uri = self.APPLICATION.router.build(None, 'api-v1', None, {})
+        response = self.test_app.get(uri)
         self.assertOK(response)
         data = response.json['data']
         self.assertEqual(len(data), 2)
@@ -67,7 +68,8 @@ class FormTest(JsonWebTestCase, WebTest):
         self.assertIsNotNone(cursor)
 
     def test_get_page_size(self):
-        response = self.test_app.get(uri_for('api-v1', page_size=5))
+        uri = self.APPLICATION.router.build(None, 'api-v1', None, {'page_size': 5})
+        response = self.test_app.get(uri)
         self.assertOK(response)
         data = response.json['data']
         self.assertEqual(len(data), 2)
@@ -77,5 +79,6 @@ class FormTest(JsonWebTestCase, WebTest):
         self.assertIsNotNone(cursor)
 
     def test_invalid_param(self):
-        response = self.test_app.get(uri_for('api-v1', foo='bar'), status=400)
+        uri = self.APPLICATION.router.build(None, 'api-v1', None, {'foo': 'bar'})
+        response = self.test_app.get(uri, status=400)
         self.assertBadRequest(response, errors={u'foo': u'* Not a recognized parameter'})
