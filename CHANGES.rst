@@ -1,5 +1,9 @@
 Changes
 -------
+* **0.7.1** -- 2012-09-10
+
+  * added is_admin param to base_test.log_in_user
+
 * **0.7** -- 2012-09-09
 
   * Updated `agar.image`_ to work with NDB.
